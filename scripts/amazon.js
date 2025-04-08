@@ -46,7 +46,7 @@ products.forEach((product) => {
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary">
+          <button class="add-to-cart-button button-primary js-add-to-cart" data-product-name= "${product.name}">
             Add to Cart
           </button>
         </div>`;
@@ -56,3 +56,27 @@ products.forEach((product) => {
 
 document.querySelector('.js-products-grid')
 .innerHTML = productsHTML;
+
+document.querySelectorAll('.js-add-to-cart')
+.forEach((addButton) => {
+  addButton.addEventListener('click',() => {
+    const productName = addButton.dataset.productName;
+
+    let matchingItem;
+    // looping through the products to ascertain if the name of the addButton is equal to that of any product and grab it in out hands (matchingItem)
+
+    products.forEach((product) => {
+      if(productName ===product.name){
+        matchingItem = product;
+      }
+    });
+
+    //  if our matching Item is not null then we proceed to add it to the cart
+    if(matchingItem){
+      cart.push({
+        productName: productName,
+        quantity: 1
+      });
+    }
+  });
+});
