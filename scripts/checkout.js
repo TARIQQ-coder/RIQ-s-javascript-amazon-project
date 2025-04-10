@@ -105,5 +105,6 @@ link.addEventListener('click', () => {
 
   const container = document.querySelector(`.js-cart-item-container-${productId}`);
   container.remove();
+
 });
 });
