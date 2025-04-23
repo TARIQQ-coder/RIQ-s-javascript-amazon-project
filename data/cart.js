@@ -40,7 +40,7 @@ export function addToCart (productId) {
     }
     saveToStorage();
 }
-
+// for the removeFromCart (), its interpreted as grouping all items in a different cart except the productId of the item we wish we eliminate. its te same as removing a product from the cart
 export function removeFromCart(productId){
   const newCart = []
 
@@ -65,3 +65,4 @@ export function updateDeliveryOption(productId,deliveryOptionId){
 
   saveToStorage();
 }
+
