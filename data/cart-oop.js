@@ -1,3 +1,6 @@
+// this is us using a function to generate objects
+// here, we created the the OOP and saved it as cart. we then placed it in a function Cart() so we could use it to call out multiple objects
+
 function Cart (localStorageKey){
   const cart = {
     cartItems : undefined,
