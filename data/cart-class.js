@@ -8,6 +8,7 @@ class Cart {
 
   // a constructor lets us run a setup code. An important feature of a constructor is that it runs automatically whenever a new object is created which makes our code cleaner
 
+  // we make a property or a method private by putting a "#" in-front of it. we hence make it inaccessible outside the class
   constructor (localStorageKey){
     this.#localStorageKey = localStorageKey;
     this.#loadFromStorage();
