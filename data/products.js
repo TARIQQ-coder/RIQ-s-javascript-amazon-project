@@ -37,7 +37,53 @@ class Product {
   getPrice(){
     return `$${formatCurrency(this.priceCents)}`;
   }
+
+  // here, we are assigning a value for the extraInfoHTML()
+  extraInfoHTML(){
+    return '';
+  }
 }
+
+
+// Since Clothing is a specific type of product, it'll possess all the properties and ideas of a product
+// To use inheritance, after the class name,we state "extends" and the class we wish to inherit from. this will make the child inherit all the properties and methods of the parent
+class Clothing extends Product {
+  sizeChartLink;
+
+
+  constructor(productDetails){
+    // Even though Clothing inherits the properties and methods of the Product, in the constructor, we need to set these values. However we can bypass that by declaring the constructor in the parent class. We do this by calling a special feature of classes called "super(parameter)". "super(parameter)" basically calls the constructor of the parent class
+    super(productDetails);
+   this.sizeChartLink = productDetails.sizeChartLink;
+
+  }
+
+  // in here, we display a link for the products with a clothing class using a method
+  extraInfoHTML(){
+    return `<a href="${this.sizeChartLink}" target="_blank">Size Chart</a>`;
+  }
+}
+
+// product2 is just an example with regards to ascertaining how inheritance works
+const product2 = new Clothing({
+  id: "83d4ca15-0f35-48f5-b7a3-1ea210004f2e",
+  image: "images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg",
+  name: "Adults Plain Cotton T-Shirt - 2 Pack",
+  rating: {
+    stars: 4.5,
+    count: 56
+  },
+  priceCents: 799,
+  keywords: [
+    "tshirts",
+    "apparel",
+    "mens"
+  ],
+  type: "clothing",
+  sizeChartLink: "images/clothing-size-chart.png"
+});
+
+
 
 // we are converting just one product into a class object for learning purposes
 
@@ -57,9 +103,9 @@ const product1 = new Product ({
     "apparel"
   ]
 });
-console.log(product1);
 
 
+// here we were able to convert all the regular objects in the products array into product classes and saved in a variable, products. This is to make the objects make use of the extra features provided by class like methods,private properties and private methods
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -720,6 +766,11 @@ export const products = [
     ]
   }
 ].map((productDetails) => {
+  // there's a "type=clothing" attached to all products that fall in the clothing category so we can target them by converting all into clothing classes
+  if(productDetails.type === 'clothing'){
+    return new Clothing(productDetails);
+  }
   // here, we've been able to convert all the objects here into class objects
   return new Product(productDetails);
 });
+
