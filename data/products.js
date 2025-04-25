@@ -1,3 +1,5 @@
+import { formatCurrency } from "../scripts/utils/money.js";
+
 export function getProduct (cartProductId){
   let matchingProduct;
 
@@ -26,10 +28,20 @@ class Product {
     this.priceCents = productDetails.priceCents;
 
   }
+
+  // used the getStarsUrl() and getPrice() to clean up the amazon.js and orderSummary.js
+  getStarsUrl(){
+    return `images/ratings/rating-${this.rating.stars * 10}.png`;
+  }
+
+  getPrice(){
+    return `$${formatCurrency(this.priceCents)}`;
+  }
 }
 
 // we are converting just one product into a class object for learning purposes
 
+// product1 is an example
 const product1 = new Product ({
   id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
   image: "images/products/athletic-cotton-socks-6-pairs.jpg",
@@ -708,6 +720,6 @@ export const products = [
     ]
   }
 ].map((productDetails) => {
+  // here, we've been able to convert all the objects here into class objects
   return new Product(productDetails);
 });
-console.log(products);
