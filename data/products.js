@@ -44,6 +44,14 @@ class Product {
   }
 }
 
+/* 
+in the space we applied the extraInfoHTML(), we could have alternatively used  an "if" statement instead like 
+
+${product instanceof Clothing?
+`<a href="${product.sizeChartLink}">Size Chart</a>`: ''
+}
+*/
+
 
 // Since Clothing is a specific type of product, it'll possess all the properties and ideas of a product
 // To use inheritance, after the class name,we state "extends" and the class we wish to inherit from. this will make the child inherit all the properties and methods of the parent
@@ -63,6 +71,16 @@ class Clothing extends Product {
     return `<a href="${this.sizeChartLink}" target="_blank">Size Chart</a>`;
   }
 }
+
+// here, we created a new date object using the inbuilt date class offered by the language. we also used a property of the class to ascertain the current time
+
+/*
+const date = new Date();
+console.log(date.toLocaleTimeString());
+console.log(date);
+
+// dayjs() is preferred to this because of the extra features it possess
+*/
 
 // product2 is just an example with regards to ascertaining how inheritance works
 const product2 = new Clothing({
