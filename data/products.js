@@ -139,10 +139,12 @@ const promise = fetch(
  });
  
  console.log('load products');
-  });
+  })
 
   return promise;
 }
+
+
 
 // loadProductsFetch().then(
 //   console.log('next step')
@@ -163,10 +165,17 @@ export function loadProducts(fun) {
  fun();
  })
 
+
+ xhr.addEventListener('error', () => {
+    console.error('Error loading products');
+ })
+ 
+
  xhr.open('GET', 'https://supersimplebackend.dev/products', true);
  xhr.send();
 
 }
+
 
 
 
